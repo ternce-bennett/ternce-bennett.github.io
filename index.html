@@ -4,160 +4,290 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Terence Bennett | Data Analyst Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
   <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-      color: #333;
-      background-color: #f9f9f9;
-      line-height: 1.6;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    header h1 {
-      margin-bottom: 5px;
+      font-family: 'Roboto', Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+      background-color: #f5f7fa;
       color: #2c3e50;
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #2980b9;
+      padding: 12px 20px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    nav a {
+      color: white;
       font-weight: 700;
-      font-size: 2.5rem;
+      text-decoration: none;
+      margin-left: 20px;
     }
-    header p {
-      color: #555;
-      font-style: italic;
-      margin: 0;
+
+    nav a:focus,
+    nav a:hover {
+      text-decoration: underline;
+      outline: none;
     }
-    section {
-      margin-bottom: 30px;
+
+    .toggle-button {
+      background: none;
+      border: 2px solid white;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 700;
     }
+    .toggle-button:focus {
+      outline: 3px solid #f39c12;
+      outline-offset: 2px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.3em;
+      color: #2c3e50;
+    }
+    body.dark-mode h1 {
+      color: #f5f5f5;
+    }
+
     h2 {
+      font-size: 2rem;
+      margin-top: 1.8em;
+      margin-bottom: 0.5em;
       color: #2c3e50;
       border-bottom: 2px solid #2980b9;
-      padding-bottom: 5px;
-      margin-bottom: 15px;
-      font-weight: 600;
+      padding-bottom: 0.2em;
     }
-    ul {
-      list-style-type: disc;
-      padding-left: 20px;
+    body.dark-mode h2 {
+      color: #f5f5f5;
+      border-color: #5599dd;
     }
+
     a {
       color: #2980b9;
       text-decoration: none;
     }
-    a:hover {
+    a:hover,
+    a:focus {
       text-decoration: underline;
+      outline: none;
     }
-    .contact-info a {
-      display: inline-block;
-      margin-right: 15px;
+
+    html {
+      scroll-behavior: smooth;
     }
+
+    section {
+      background-color: #ffffff;
+      padding: 20px 25px;
+      margin-bottom: 40px;
+      border-radius: 8px;
+      box-shadow: 0 3px 7px rgba(0,0,0,0.05);
+      transition: background-color 0.3s;
+    }
+    body.dark-mode section {
+      background-color: #1e1e1e;
+      box-shadow: 0 3px 7px rgba(255,255,255,0.05);
+    }
+
+    .passion-hook {
+      font-style: italic;
+      font-weight: 500;
+      margin-bottom: 30px;
+      color: #555;
+    }
+    body.dark-mode .passion-hook {
+      color: #aaa;
+    }
+
+    /* Project insights style */
+    .project {
+      margin-bottom: 20px;
+    }
+    .project-insight {
+      font-style: italic;
+      color: #555;
+      margin-top: 5px;
+    }
+    body.dark-mode .project-insight {
+      color: #bbb;
+    }
+
+    /* Print Styles */
+    @media print {
+      .toggle-button {
+        display: none !important;
+      }
+      nav {
+        position: static;
+        box-shadow: none;
+        background: none;
+        padding: 0;
+        margin-bottom: 20px;
+      }
+      section {
+        box-shadow: none;
+        background: white;
+        padding: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    /* Loading Overlay */
+    #loading-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #2980b9;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      z-index: 2000;
+      transition: opacity 0.3s ease;
+    }
+    #loading-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
     footer {
       text-align: center;
-      margin-top: 50px;
       font-size: 0.9rem;
-      color: #777;
+      color: #888;
+      margin-top: 40px;
+      padding-top: 15px;
+      border-top: 1px solid #ddd;
     }
-    @media (max-width: 600px) {
-      body {
-        margin: 20px 10px;
-      }
-      header h1 {
-        font-size: 2rem;
-      }
+    body.dark-mode footer {
+      color: #aaa;
+      border-color: #444;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Terence Bennett</h1>
-    <p>Self-taught aspiring data analyst with skills in Python, SQL, and data visualization. Experienced in cleaning and analyzing data to uncover actionable insights.</p>
-  </header>
+  <div id="loading-overlay">Loading...</div>
 
-  <section>
-    <h2>Profile</h2>
-    <p>Analytical graduate with a B.A. in Psychology & Philosophy from the University of Galway. Proficient in Python, R, SQL, and data visualization with experience in predictive modeling, dashboard creation, and exploratory analysis. Skilled at transforming complex data into actionable insights. Seeking a Junior Data Analyst role.</p>
-  </section>
+  <nav aria-label="Primary navigation">
+    <div><strong>Terence Bennett</strong></div>
+    <div>
+      <a href="#about" tabindex="0">About</a>
+      <a href="#projects" tabindex="0">Projects</a>
+      <a href="#contact" tabindex="0">Contact</a>
+      <button class="toggle-button" aria-pressed="false" aria-label="Toggle light and dark mode">Dark Mode</button>
+    </div>
+  </nav>
 
-  <section>
-    <h2>Skills</h2>
-    <ul>
-      <li>Languages: Python, R, SQL</li>
-      <li>Tools: Pandas, NumPy, Matplotlib, Seaborn, Streamlit, Jupyter Notebook, Git, Tableau (basic)</li>
-      <li>Machine Learning: Logistic Regression, Predictive Modeling</li>
-      <li>Other: Data Cleaning, Exploratory Data Analysis (EDA), Excel (Pivot Tables, Formulas)</li>
-      <li>Currently learning OCaml</li>
-    </ul>
-  </section>
+  <main>
+    <section id="about" tabindex="-1">
+      <h1>Hi, I’m Terence Bennett</h1>
+      <p class="passion-hook">Passionate about turning raw data into clear insights that drive smart decisions.</p>
+      <p>Welcome to my data analyst portfolio website!</p>
+      <h2>About Me</h2>
+      <p>
+        I’m a self-taught aspiring data analyst skilled in Python, SQL, and data visualization.
+        Experienced in cleaning and analyzing data to uncover actionable insights. Currently learning OCaml to expand my programming skills.
+      </p>
+    </section>
 
-  <section>
-    <h2>Projects</h2>
-    <ul>
-      <li><a href="https://github.com/ternce-bennett/dublin-housing-affordability-analysis" target="_blank" rel="noopener">Dublin Housing Affordability Analysis</a> — Analyzed 10 years of housing data; calculated affordability ratios and visualized mortgage burdens.</li>
-      <li><a href="https://github.com/ternce-bennett/admissions-prediction-r" target="_blank" rel="noopener">Graduate Admissions Prediction (R)</a> — Built logistic regression model with 82% accuracy on 500+ profiles; identified key success predictors.</li>
-      <li><a href="https://github.com/ternce-bennett/stock-analysis-dashboard" target="_blank" rel="noopener">Stock Analysis Dashboard</a> — Developed an interactive dashboard comparing Tesla & NIO stock performance using live data.</li>
-      <li><a href="https://github.com/ternce-bennett/london-airbnb-housing-analysis" target="_blank" rel="noopener">London Airbnb Housing Analysis</a> — Investigated Airbnb density vs. rental prices; created geospatial visualizations.</li>
-      <li><a href="https://github.com/ternce-bennett/moving-average-crossover-strategy" target="_blank" rel="noopener">Moving Average Crossover Strategy</a> — Developed a stock trading strategy using moving averages.</li>
-    </ul>
-  </section>
+    <section id="projects" tabindex="-1">
+      <h2>Projects</h2>
+      <div class="project">
+        <a href="https://github.com/ternce-bennett/dublin-housing-affordability-analysis" target="_blank" rel="noopener noreferrer">Dublin Housing Affordability Analysis</a>
+        <p class="project-insight">Analyzed 10 years of housing data to calculate affordability ratios and visualize mortgage burdens. Learned how to clean large datasets and create clear visualizations that tell a story.</p>
+      </div>
+      <div class="project">
+        <a href="https://github.com/ternce-bennett/moving-average-crossover-strategy" target="_blank" rel="noopener noreferrer">Moving Average Crossover Strategy</a>
+        <p class="project-insight">Developed a stock trading strategy using moving averages. Gained experience in time series analysis and algorithmic thinking.</p>
+      </div>
+      <div class="project">
+        <a href="https://github.com/ternce-bennett/stock-analysis-dashboard" target="_blank" rel="noopener noreferrer">Stock Analysis Dashboard</a>
+        <p class="project-insight">Built an interactive dashboard comparing Tesla & NIO stock performance using live data. Improved skills in Streamlit and dashboard design.</p>
+      </div>
+      <div class="project">
+        <a href="https://github.com/ternce-bennett/london-airbnb-housing-analysis" target="_blank" rel="noopener noreferrer">London Airbnb Housing Analysis</a>
+        <p class="project-insight">Investigated Airbnb density versus rental prices and created geospatial visualizations. Learned about geospatial data and effective map visualization techniques.</p>
+      </div>
+      <div class="project">
+        <a href="https://github.com/ternce-bennett/admissions-prediction-r" target="_blank" rel="noopener noreferrer">Graduate Admissions Prediction (R)</a>
+        <p class="project-insight">Built a logistic regression model with 82% accuracy on 500+ profiles. Gained experience with predictive modeling and feature selection in R.</p>
+      </div>
+    </section>
 
-  <section>
-    <h2>Work Experience</h2>
-    <ul>
-      <li><strong>Material Handler</strong> — Philips Medisize, Sligo | Aug 2022 – Present  
-        <ul>
-          <li>Maintained accurate inventory records under GMP standards.</li>
-        </ul>
-      </li>
-      <li><strong>General Operative</strong> — Philips Medisize, Sligo | Feb 2018 – Feb 2022  
-        <ul>
-          <li>Supported manufacturing operations, ensuring product quality and meeting production targets.</li>
-        </ul>
-      </li>
-    </ul>
-  </section>
+    <section id="contact" tabindex="-1">
+      <h2>Contact</h2>
+      <p>Email: <span id="email"></span></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/terence-bennett-54a02b2b4/" target="_blank" rel="noopener noreferrer">terence-bennett</a></p>
+      <p>GitHub: <a href="https://github.com/ternce-bennett" target="_blank" rel="noopener noreferrer">ternce-bennett</a></p>
+      <p>Located in Ireland | Pronouns: he/him</p>
+    </section>
+  </main>
 
-  <section>
-    <h2>Education & Awards</h2>
-    <ul>
-      <li><strong>B.A. Psychology & Philosophy</strong> — University of Galway (2020 – 2023)
-        <ul>
-          <li>University Scholar Award for top academic performance in first year (2020).</li>
-        </ul>
-      </li>
-      <li>Gaisce – The President’s Award</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Courses & Certifications</h2>
-    <ul>
-      <li>Build and Deploy a Stroke Prediction Model using R — Coursera Project Network</li>
-      <li>Crash Course on Python — Google</li>
-      <li>Psychological First Aid — Johns Hopkins University</li>
-      <li>Qualitative Research Methods — University of Amsterdam</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Resume / CV</h2>
-    <p><a href="Terence_Bennett_CV.pdf" target="_blank" rel="noopener">Download my CV (PDF)</a></p>
-  </section>
-
-  <section class="contact-info">
-    <h2>Contact</h2>
-    <p>
-      <a href="mailto:terence8bennett@gmail.com">terence8bennett@gmail.com</a> | 
-      <a href="tel:+353868786008">+353 868786008</a> | 
-      <a href="https://github.com/ternce-bennett" target="_blank" rel="noopener">GitHub</a> | 
-      <a href="https://linkedin.com/in/terence-bennett-54a02b2b4" target="_blank" rel="noopener">LinkedIn</a>
-    </p>
-  </section>
-
-  <footer>
-    <p>Located in Ireland | Pronouns: he/him</p>
+  <footer role="contentinfo">
+    &copy; <span id="year"></span> Terence Bennett. All rights reserved.
   </footer>
+
+  <script>
+    // Loading overlay hide on page load
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loading-overlay');
+      loader.classList.add('hidden');
+      setTimeout(() => loader.style.display = 'none', 300); // remove from DOM flow after fade out
+    });
+
+    // Light/Dark mode toggle
+    const toggleBtn = document.querySelector('.toggle-button');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      toggleBtn.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+      toggleBtn.setAttribute('aria-pressed', isDark);
+    });
+
+    // Spam-proof email encoding
+    (function() {
+      const user = 'terence8bennett';
+      const domain = 'gmail.com';
+      const emailSpan = document.getElementById('email');
+      const mailtoLink = document.createElement('a');
+      mailtoLink.href = `mailto:${user}@${domain}`;
+      mailtoLink.textContent = `${user}@${domain}`;
+      emailSpan.appendChild(mailtoLink);
+    })();
+
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
