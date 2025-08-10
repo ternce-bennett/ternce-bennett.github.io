@@ -14,7 +14,6 @@
             color: #2c3e50;
             background: #f9f9f9;
             line-height: 1.6;
-            scroll-behavior: smooth; /* Smooth scrolling */
         }
         
         h1, h2 { 
@@ -226,42 +225,42 @@
         <div class="skill">
             <label>Python</label>
             <div class="progress-container">
-                <div class="progress-bar"><div class="progress" style="width: 0" data-width="85%"></div></div>
+                <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
                 <span class="skill-percent">85%</span>
             </div>
         </div>
         <div class="skill">
             <label>R</label>
             <div class="progress-container">
-                <div class="progress-bar"><div class="progress" style="width: 0" data-width="75%"></div></div>
+                <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
                 <span class="skill-percent">75%</span>
             </div>
         </div>
         <div class="skill">
             <label>SQL</label>
             <div class="progress-container">
-                <div class="progress-bar"><div class="progress" style="width: 0" data-width="80%"></div></div>
+                <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
                 <span class="skill-percent">80%</span>
             </div>
         </div>
         <div class="skill">
             <label>Data Visualization</label>
             <div class="progress-container">
-                <div class="progress-bar"><div class="progress" style="width: 0" data-width="70%"></div></div>
+                <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
                 <span class="skill-percent">70%</span>
             </div>
         </div>
         <div class="skill">
             <label>Machine Learning</label>
             <div class="progress-container">
-                <div class="progress-bar"><div class="progress" style="width: 0" data-width="60%"></div></div>
+                <div class="progress-bar"><div class="progress" style="width: 60%;"></div></div>
                 <span class="skill-percent">60%</span>
             </div>
         </div>
         <div class="skill">
             <label>OCaml (Learning)</label>
             <div class="progress-container">
-                <div class="progress-bar"><div class="progress" style="width: 0" data-width="30%"></div></div>
+                <div class="progress-bar"><div class="progress" style="width: 30%;"></div></div>
                 <span class="skill-percent">30%</span>
             </div>
         </div>
@@ -270,15 +269,23 @@
     <section id="projects" class="fade-in" style="animation-delay: 0.5s;" tabindex="-1">
         <h2>Projects</h2>
         <ul>
-            <li><a href="https://github.com/ternce-bennett/dublin-housing-affordability-analysis" target="_blank" rel="noopener noreferrer">Dublin Housing Affordability Analysis</a></li>
-            <li><a href="https://github.com/ternce-bennett/moving-average-crossover-strategy" target="_blank" rel="noopener noreferrer">Moving Average Crossover Strategy</a></li>
-            <li><a href="https://github.com/ternce-bennett/stock-analysis-dashboard" target="_blank" rel="noopener noreferrer">Stock Analysis Dashboard</a></li>
-            <li><a href="https://github.com/ternce-bennett/london-airbnb-housing-analysis" target="_blank" rel="noopener noreferrer">London Airbnb Housing Analysis</a></li>
-            <li><a href="https://github.com/ternce-bennett/admissions-prediction-r" target="_blank" rel="noopener noreferrer">Graduate Admissions Prediction</a></li>
+            <li><a href="https://github.com/ternce-bennett/dublin-housing-affordability-analysis" target="_blank">Dublin Housing Affordability Analysis</a></li>
+            <li><a href="https://github.com/ternce-bennett/moving-average-crossover-strategy" target="_blank">Moving Average Crossover Strategy</a></li>
+            <li><a href="https://github.com/ternce-bennett/stock-analysis-dashboard" target="_blank">Stock Analysis Dashboard</a></li>
+            <li><a href="https://github.com/ternce-bennett/london-airbnb-housing-analysis" target="_blank">London Airbnb Housing Analysis</a></li>
+            <li><a href="https://github.com/ternce-bennett/admissions-prediction-r" target="_blank">Graduate Admissions Prediction</a></li>
+        </ul>
+    </section>
+
+    <section id="education" class="fade-in" style="animation-delay: 0.6s;" tabindex="-1">
+        <h2>Education & Awards</h2>
+        <ul>
+            <li><strong>B.A. in Psychology & Philosophy</strong>, University of Galway, 2020 - 2023</li>
+            <li><strong>University Scholar Award</strong>, awarded in First Year, University of Galway</li>
         </ul>
     </section>
     
-    <section id="contact" class="fade-in" style="animation-delay: 0.6s;" tabindex="-1">
+    <section id="contact" class="fade-in" style="animation-delay: 0.7s;" tabindex="-1">
         <h2>Contact</h2>
         <div class="contact-info">
             <div class="contact-item">
@@ -305,18 +312,20 @@
     </footer>
 
     <script>
+        // Animate progress bars on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Set current year
             document.getElementById('year').textContent = new Date().getFullYear();
             
+            // Trigger animations for skills section when it comes into view
             const skillsSection = document.getElementById('skills');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const progressBars = document.querySelectorAll('.progress');
                         progressBars.forEach(bar => {
-                            const targetWidth = bar.getAttribute('data-width');
-                            bar.style.width = targetWidth;
+                            // This will trigger the CSS transition by setting width to the inline style width
+                            bar.style.width = bar.style.width;
                         });
                         observer.unobserve(entry.target);
                     }
@@ -330,4 +339,3 @@
     </script>
 </body>
 </html>
-
