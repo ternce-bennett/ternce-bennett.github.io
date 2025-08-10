@@ -1,293 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Terence Bennett | Data Analyst Portfolio</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-
-  <style>
-    /* Basic Reset */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Roboto', Arial, sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 20px 60px;
-      background-color: #f5f7fa;
-      color: #2c3e50;
-      line-height: 1.6;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    body.dark-mode {
-      background-color: #121212;
-      color: #e0e0e0;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      background-color: #2980b9;
-      padding: 12px 20px;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-    }
-
-    nav a {
-      color: white;
-      font-weight: 700;
-      text-decoration: none;
-      margin-left: 20px;
-    }
-
-    nav a:focus,
-    nav a:hover {
-      text-decoration: underline;
-      outline: none;
-    }
-
-    .toggle-button {
-      background: none;
-      border: 2px solid white;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 700;
-    }
-    .toggle-button:focus {
-      outline: 3px solid #f39c12;
-      outline-offset: 2px;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.3em;
-      color: #2c3e50;
-    }
-    body.dark-mode h1 {
-      color: #f5f5f5;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-top: 1.8em;
-      margin-bottom: 0.5em;
-      color: #2c3e50;
-      border-bottom: 2px solid #2980b9;
-      padding-bottom: 0.2em;
-    }
-    body.dark-mode h2 {
-      color: #f5f5f5;
-      border-color: #5599dd;
-    }
-
-    a {
-      color: #2980b9;
-      text-decoration: none;
-    }
-    a:hover,
-    a:focus {
-      text-decoration: underline;
-      outline: none;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    section {
-      background-color: #ffffff;
-      padding: 20px 25px;
-      margin-bottom: 40px;
-      border-radius: 8px;
-      box-shadow: 0 3px 7px rgba(0,0,0,0.05);
-      transition: background-color 0.3s;
-    }
-    body.dark-mode section {
-      background-color: #1e1e1e;
-      box-shadow: 0 3px 7px rgba(255,255,255,0.05);
-    }
-
-    .passion-hook {
-      font-style: italic;
-      font-weight: 500;
-      margin-bottom: 30px;
-      color: #555;
-    }
-    body.dark-mode .passion-hook {
-      color: #aaa;
-    }
-
-    /* Project insights style */
-    .project {
-      margin-bottom: 20px;
-    }
-    .project-insight {
-      font-style: italic;
-      color: #555;
-      margin-top: 5px;
-    }
-    body.dark-mode .project-insight {
-      color: #bbb;
-    }
-
-    /* Print Styles */
-    @media print {
-      .toggle-button {
-        display: none !important;
-      }
-      nav {
-        position: static;
-        box-shadow: none;
-        background: none;
-        padding: 0;
-        margin-bottom: 20px;
-      }
-      section {
-        box-shadow: none;
-        background: white;
-        padding: 0;
-        margin-bottom: 0;
-      }
-    }
-
-    /* Loading Overlay */
-    #loading-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: #2980b9;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      z-index: 2000;
-      transition: opacity 0.3s ease;
-    }
-    #loading-overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #888;
-      margin-top: 40px;
-      padding-top: 15px;
-      border-top: 1px solid #ddd;
-    }
-    body.dark-mode footer {
-      color: #aaa;
-      border-color: #444;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Terence Bennett | Data Analyst Portfolio</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #2c3e50;
+            background: #f9f9f9;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+        
+        h1, h2 { 
+            color: #2c3e50;
+            margin-top: 1.5em;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5em;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #2980b9, #2c3e50);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        h1:hover::after {
+            transform: scaleX(1);
+        }
+        
+        a { 
+            color: #2980b9; 
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover { 
+            color: #1a5276;
+            text-decoration: underline;
+        }
+        
+        ul { 
+            padding-left: 20px;
+            list-style-type: none;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #2980b9;
+            transition: transform 0.2s ease;
+        }
+        
+        li:hover::before {
+            transform: translateX(5px);
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        /* Skills Progress Bars */
+        .skill {
+            margin-bottom: 15px;
+        }
+        
+        .skill label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #34495e;
+        }
+        
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .progress-bar {
+            flex-grow: 1;
+            background-color: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 18px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #2980b9, #3498db);
+            border-radius: 15px;
+            width: 0;
+            transition: width 1.2s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to right,
+                rgba(255,255,255,0.1) 0%,
+                rgba(255,255,255,0.4) 50%,
+                rgba(255,255,255,0.1) 100%
+            );
+            animation: shimmer 2s infinite linear;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .skill-percent {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            min-width: 40px;
+            text-align: right;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            background: rgba(41, 128, 185, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(41, 128, 185, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .contact-item i {
+            font-style: normal;
+            font-size: 1.2em;
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            font-size: 0.9em;
+            text-align: center;
+            color: #7f8c8d;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                margin: 20px auto;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div id="loading-overlay">Loading...</div>
-
-  <nav aria-label="Primary navigation">
-    <div><strong>Terence Bennett</strong></div>
-    <div>
-      <a href="#about" tabindex="0">About</a>
-      <a href="#projects" tabindex="0">Projects</a>
-      <a href="#contact" tabindex="0">Contact</a>
-      <button class="toggle-button" aria-pressed="false" aria-label="Toggle light and dark mode">Dark Mode</button>
-    </div>
-  </nav>
-
-  <main>
-    <section id="about" tabindex="-1">
-      <h1>Hi, I’m Terence Bennett</h1>
-      <p class="passion-hook">Passionate about turning raw data into clear insights that drive smart decisions.</p>
-      <p>Welcome to my data analyst portfolio website!</p>
-      <h2>About Me</h2>
-      <p>
-        I’m a self-taught aspiring data analyst skilled in Python, SQL, and data visualization.
-        Experienced in cleaning and analyzing data to uncover actionable insights. Currently learning OCaml to expand my programming skills.
-      </p>
+    <h1 class="fade-in" style="animation-delay: 0.1s;">Hi, I'm Terence Bennett</h1>
+    <p class="fade-in" style="animation-delay: 0.2s;">Welcome to my data analyst portfolio website!</p>
+    
+    <section id="about" class="fade-in" style="animation-delay: 0.3s;" tabindex="-1">
+        <h2>About Me</h2>
+        <p>I'm a self-taught aspiring data analyst skilled in Python, SQL, and data visualization. Experienced in cleaning and analyzing data to uncover actionable insights. Currently learning OCaml to expand my programming skills.</p>
+    </section>
+    
+    <section id="skills" class="fade-in" style="animation-delay: 0.4s;" tabindex="-1">
+        <h2>Skills</h2>
+        <div class="skill">
+            <label>Python</label>
+            <div class="progress-container">
+                <div class="progress-bar"><div class="progress" style="width: 0" data-width="85%"></div></div>
+                <span class="skill-percent">85%</span>
+            </div>
+        </div>
+        <div class="skill">
+            <label>R</label>
+            <div class="progress-container">
+                <div class="progress-bar"><div class="progress" style="width: 0" data-width="75%"></div></div>
+                <span class="skill-percent">75%</span>
+            </div>
+        </div>
+        <div class="skill">
+            <label>SQL</label>
+            <div class="progress-container">
+                <div class="progress-bar"><div class="progress" style="width: 0" data-width="80%"></div></div>
+                <span class="skill-percent">80%</span>
+            </div>
+        </div>
+        <div class="skill">
+            <label>Data Visualization</label>
+            <div class="progress-container">
+                <div class="progress-bar"><div class="progress" style="width: 0" data-width="70%"></div></div>
+                <span class="skill-percent">70%</span>
+            </div>
+        </div>
+        <div class="skill">
+            <label>Machine Learning</label>
+            <div class="progress-container">
+                <div class="progress-bar"><div class="progress" style="width: 0" data-width="60%"></div></div>
+                <span class="skill-percent">60%</span>
+            </div>
+        </div>
+        <div class="skill">
+            <label>OCaml (Learning)</label>
+            <div class="progress-container">
+                <div class="progress-bar"><div class="progress" style="width: 0" data-width="30%"></div></div>
+                <span class="skill-percent">30%</span>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="fade-in" style="animation-delay: 0.5s;" tabindex="-1">
+        <h2>Projects</h2>
+        <ul>
+            <li><a href="https://github.com/ternce-bennett/dublin-housing-affordability-analysis" target="_blank" rel="noopener noreferrer">Dublin Housing Affordability Analysis</a></li>
+            <li><a href="https://github.com/ternce-bennett/moving-average-crossover-strategy" target="_blank" rel="noopener noreferrer">Moving Average Crossover Strategy</a></li>
+            <li><a href="https://github.com/ternce-bennett/stock-analysis-dashboard" target="_blank" rel="noopener noreferrer">Stock Analysis Dashboard</a></li>
+            <li><a href="https://github.com/ternce-bennett/london-airbnb-housing-analysis" target="_blank" rel="noopener noreferrer">London Airbnb Housing Analysis</a></li>
+            <li><a href="https://github.com/ternce-bennett/admissions-prediction-r" target="_blank" rel="noopener noreferrer">Graduate Admissions Prediction</a></li>
+        </ul>
+    </section>
+    
+    <section id="contact" class="fade-in" style="animation-delay: 0.6s;" tabindex="-1">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i>📧</i>
+                <a href="mailto:terence8bennett@gmail.com">terence8bennett@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i>📱</i>
+                <a href="tel:+353868786008">+353 868786008</a>
+            </div>
+            <div class="contact-item">
+                <i>💻</i>
+                <a href="https://github.com/ternce-bennett" target="_blank" rel="noopener noreferrer">github.com/ternce-bennett</a>
+            </div>
+            <div class="contact-item">
+                <i>🔗</i>
+                <a href="https://www.linkedin.com/in/terence-bennett-54a02b2b4" target="_blank" rel="noopener noreferrer">linkedin.com/in/terence-bennett</a>
+            </div>
+        </div>
     </section>
 
-    <section id="projects" tabindex="-1">
-      <h2>Projects</h2>
-      <div class="project">
-        <a href="https://github.com/ternce-bennett/dublin-housing-affordability-analysis" target="_blank" rel="noopener noreferrer">Dublin Housing Affordability Analysis</a>
-        <p class="project-insight">Analyzed 10 years of housing data to calculate affordability ratios and visualize mortgage burdens. Learned how to clean large datasets and create clear visualizations that tell a story.</p>
-      </div>
-      <div class="project">
-        <a href="https://github.com/ternce-bennett/moving-average-crossover-strategy" target="_blank" rel="noopener noreferrer">Moving Average Crossover Strategy</a>
-        <p class="project-insight">Developed a stock trading strategy using moving averages. Gained experience in time series analysis and algorithmic thinking.</p>
-      </div>
-      <div class="project">
-        <a href="https://github.com/ternce-bennett/stock-analysis-dashboard" target="_blank" rel="noopener noreferrer">Stock Analysis Dashboard</a>
-        <p class="project-insight">Built an interactive dashboard comparing Tesla & NIO stock performance using live data. Improved skills in Streamlit and dashboard design.</p>
-      </div>
-      <div class="project">
-        <a href="https://github.com/ternce-bennett/london-airbnb-housing-analysis" target="_blank" rel="noopener noreferrer">London Airbnb Housing Analysis</a>
-        <p class="project-insight">Investigated Airbnb density versus rental prices and created geospatial visualizations. Learned about geospatial data and effective map visualization techniques.</p>
-      </div>
-      <div class="project">
-        <a href="https://github.com/ternce-bennett/admissions-prediction-r" target="_blank" rel="noopener noreferrer">Graduate Admissions Prediction (R)</a>
-        <p class="project-insight">Built a logistic regression model with 82% accuracy on 500+ profiles. Gained experience with predictive modeling and feature selection in R.</p>
-      </div>
-    </section>
+    <footer>
+        &copy; <span id="year"></span> Terence Bennett. All rights reserved.
+    </footer>
 
-    <section id="contact" tabindex="-1">
-      <h2>Contact</h2>
-      <p>Email: <span id="email"></span></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/terence-bennett-54a02b2b4/" target="_blank" rel="noopener noreferrer">terence-bennett</a></p>
-      <p>GitHub: <a href="https://github.com/ternce-bennett" target="_blank" rel="noopener noreferrer">ternce-bennett</a></p>
-      <p>Located in Ireland | Pronouns: he/him</p>
-    </section>
-  </main>
-
-  <footer role="contentinfo">
-    &copy; <span id="year"></span> Terence Bennett. All rights reserved.
-  </footer>
-
-  <script>
-    // Loading overlay hide on page load
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('loading-overlay');
-      loader.classList.add('hidden');
-      setTimeout(() => loader.style.display = 'none', 300); // remove from DOM flow after fade out
-    });
-
-    // Light/Dark mode toggle
-    const toggleBtn = document.querySelector('.toggle-button');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const isDark = document.body.classList.contains('dark-mode');
-      toggleBtn.textContent = isDark ? 'Light Mode' : 'Dark Mode';
-      toggleBtn.setAttribute('aria-pressed', isDark);
-    });
-
-    // Spam-proof email encoding
-    (function() {
-      const user = 'terence8bennett';
-      const domain = 'gmail.com';
-      const emailSpan = document.getElementById('email');
-      const mailtoLink = document.createElement('a');
-      mailtoLink.href = `mailto:${user}@${domain}`;
-      mailtoLink.textContent = `${user}@${domain}`;
-      emailSpan.appendChild(mailtoLink);
-    })();
-
-    // Set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            const skillsSection = document.getElementById('skills');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progressBars = document.querySelectorAll('.progress');
+                        progressBars.forEach(bar => {
+                            const targetWidth = bar.getAttribute('data-width');
+                            bar.style.width = targetWidth;
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+        });
+    </script>
 </body>
 </html>
+
